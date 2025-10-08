@@ -46,51 +46,54 @@ const handleSubmit = async (): Promise<void> => {
 </script>
 
 <template>
-  <div class="grid grid-cols-4 mt-20  place-items-center">
+  <div class="flex flex-col w-full lg:flex-row mt-20 px-4 ">
+    <div class="flex flex-col sm:flex-row justify-center gap-10 w-full">
+      <div class="w-full sm:w-auto">
+        <input
+            :value="price"
+            @input="handlePriceChange($event)"
+            class="w-full p-4 border-black border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Введите цену"
+            type="number"
+            id="price"
+        >
+        <h1 class="mt-5 text-lg font-medium break-words">Цена: {{price}}</h1>
+      </div>
 
-    <div>
-      <input
-          :value="price"
-          @input="handlePriceChange($event)"
-          class="p-4 border-black border-2 rounded-xl"
-          placeholder="Введите цену"
-          type="number"
-          id="price"
-      >
-      <h1 class="mt-5">Цена: {{price}}</h1>
-    </div>
+      <div class="w-full sm:w-auto">
+        <input
+            :value="qty"
+            @input="handleQtyChange($event)"
+            class="w-full p-4 border-black border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Введите кол-во"
+            type="number"
+            id="qty">
+        <h1 class="mt-5 text-lg font-medium break-words">Кол-во: {{qty}}</h1>
+      </div>
 
-    <div>
-      <input
-          :value="qty"
-          @input="handleQtyChange($event)"
-          class="p-4 border-black border-2 rounded-xl"
-          placeholder="Введите кол-во"
-          type="number"
-          id="qty">
-      <h1 class="mt-5">Кол-во: {{qty}}</h1>
-    </div>
+      <div class="w-full sm:w-auto">
+        <input
+            :value="amount"
+            @input="handleAmountChange($event)"
+            class="w-full p-4 border-black border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Введите сумму"
+            type="number"
+            id="amount">
+        <h1 class="mt-5 text-lg font-medium break-words">Сумма: {{amount}}</h1>
+      </div>
 
-    <div class="">
-      <input
-          :value="amount"
-          @input="handleAmountChange($event)"
-          class="p-4 border-black border-2 rounded-xl"
-          placeholder="Введите сумму"
-          type="number"
-          id="amount">
-      <h1 class="mt-5">Сумма: {{amount}}</h1>
-    </div>
-
-    <div class="">
-      <button
-          @click="handleSubmit"
-          :disabled="isLoading"
-          class="bg-emerald-300 transition-all duration-200 hover:scale-105  p-4 w-60 rounded-xl"
-      >
-        {{isLoading ? 'Отправка...' : 'Отправить' }}
-      </button>
-      <h1 class="mt-5">Состояние localStorage: {{localStorageText}}</h1>
+      <div class="w-full sm:w-auto flex flex-col items-start">
+        <button
+            @click="handleSubmit"
+            :disabled="isLoading"
+            class="bg-emerald-300 transition-all duration-200 hover:scale-105 disabled:hover:scale-100 disabled:opacity-50 p-4 w-full sm:w-60 rounded-xl font-medium disabled:cursor-not-allowed"
+        >
+          {{isLoading ? 'Отправка...' : 'Отправить' }}
+        </button>
+        <h1 class="mt-5 text-lg font-medium break-words whitespace-normal max-w-80">
+          Состояние localStorage: <span class="break-all">{{localStorageText}}</span>
+        </h1>
+      </div>
     </div>
 
   </div>
