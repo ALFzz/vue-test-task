@@ -16,18 +16,18 @@ const localStorageText = computed(() => {
 
 const handlePriceChange = debounce((event: Event) => {
   const target = event.target as HTMLInputElement;
-  store.updatePrice(target.value);
-}, 300)
+  store.updatePrice(Number(target.value));
+}, 300);
 
 const handleQtyChange = debounce((event: Event) => {
   const target = event.target as HTMLInputElement;
-  store.updateQty(target.value);
-}, 300)
+  store.updateQty(Number(target.value));
+}, 300);
 
 const handleAmountChange = debounce((event: Event) => {
   const target = event.target as HTMLInputElement;
-  store.updateAmount(target.value);
-}, 300)
+  store.updateAmount(Number(target.value));
+}, 300);
 
 const handleSubmit = async (): Promise<void> => {
   isLoading.value = true;
