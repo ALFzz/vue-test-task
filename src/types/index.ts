@@ -1,14 +1,14 @@
 export interface FormData {
     price: number,
+    qty: number,
     amount: number,
-    sum: number,
     counter: number
 }
 
 export interface LastUpdated {
     price: number,
+    qty: number,
     amount: number,
-    sum: number,
 }
 
 export interface EventLog {
